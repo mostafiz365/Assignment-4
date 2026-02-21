@@ -32,17 +32,17 @@
         Job Application Tracker
       </h1>
       <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5">
-        <div id="total-count" class="p-5 bg-white rounded-lg">
+        <div class="p-5 bg-white rounded-lg">
           <p class="font-medium text-[14px] text-[#323B49]">Total</p>
-          <p class="font-bold text-2xl text-[#002C5C]">0</p>
+          <p id="total-count" class="font-bold text-2xl text-[#002C5C]">0</p>
         </div>
-        <div id="interview-count" class="p-5 bg-white rounded-lg">
+        <div class="p-5 bg-white rounded-lg">
           <p class="font-medium text-[14px] text-[#323B49]">Interview</p>
-          <p class="font-bold text-2xl text-[#10B981]">0</p>
+          <p id="interview-count" class="font-bold text-2xl text-[#10B981]">0</p>
         </div>
-        <div id="rejected-count" class="p-5 bg-white rounded-lg">
+        <div class="p-5 bg-white rounded-lg">
           <p class="font-medium text-[14px] text-[#323B49]">Rejected</p>
-          <p class="font-bold text-2xl text-[#EF4444]">0</p>
+          <p id="rejected-count" class="font-bold text-2xl text-[#EF4444]">0</p>
         </div>
       </section>
       <hr class="my-7 text-[#E6E7E9]" />
@@ -55,15 +55,15 @@
       </section>
 
       <section class="flex gap-2.5 mt-6 mb-4">
-        <button id="all-btn"
+        <button onclick="toggleStyle('all-btn')" id="all-btn"
           class="px-6 py-2 rounded-md font-semibold text-[12px] bg-[#3B82F6] text-white">All</button>
-        <button
+        <button onclick="toggleStyle('interview-btn')"
           id="interview-btn"
           class="px-4 py-2 rounded-md font-semibold text-[12px] bg-white text-[#64748B]"
         >
           Interview
         </button>
-        <button
+        <button onclick="toggleStyle('rejected-btn')"
           id="rejected-btn"
           class="px-4 py-2 rounded-md font-semibold text-[12px] bg-white text-[#64748B]"
         >
@@ -71,7 +71,7 @@
         </button>
       </section>
 
-      <section class="card-container space-y-4 grid grid-cols-2 md:grid-cols-1 gap-2">
+      <section id="card-section" class="card-container space-y-4 grid grid-cols-2 md:grid-cols-1 gap-2" >
         <div class="bg-white p-6 rounded-lg flex justify-between">
           <div class="space-y-4">
             <h5 class="text-[18px] font-semibold text-[#002C5C]">
@@ -372,7 +372,7 @@ Full-time
       </section>
 
 
-      <section class="bg-white rounded-lg py-[60px] px-10 hidden">
+      <section id="no-job-section" class="bg-white rounded-lg py-[60px] px-10 hidden">
           <div  class="flex items-center justify-center">
             <div class="text-center">
             <img class="mx-auto mb-5" src="jobs.png" alt="">
@@ -382,5 +382,8 @@ Full-time
         </div>
       </section>
     </main>
+
+
+    <script src="javaScript/function.js"></script>
   </body>
 </html>
