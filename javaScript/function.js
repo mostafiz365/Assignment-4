@@ -123,7 +123,7 @@ mainContainer.addEventListener('click', function(event){
     
     if(currentStatus == 'rejected-btn'){
         renderRejected();
-        jobAvailableCount.innerText = interviewList.length;
+        jobAvailableCount.innerText = rejectedList.length;
     }
     count()
     }
@@ -157,6 +157,7 @@ mainContainer.addEventListener('click', function(event){
 
     if(currentStatus == "interview-btn"){
         renderInterview();
+        jobAvailableCount.innerText = interviewList.length;
     }
 
     count();
