@@ -9,23 +9,42 @@ let rejectedCount = document.getElementById('rejected-count');
 const allBtn = document.getElementById('all-btn');
 const interviewBtn = document.getElementById('interview-btn');
 const rejectedBtn = document.getElementById('rejected-btn');
+const mainContainer = document.getElementById('main-container');
 const filteredSection = document.getElementById('filtered-section');
 
 const cardSection = document.getElementById('card-section');
 const noJobSection = document.getElementById('no-job-section');
+const jobAvailableCount = document.getElementById('job-available-count');
+
+jobAvailableCount.innerText = cardSection.children.length;
+
+const deleteBtn = document.getElementsByClassName('delete-btn');
+
+for(let i = 0 ; i < deleteBtn.length ; i++){
+  deleteBtn[i].addEventListener('click', function(){
+    const card = this.parentElement;
+    alert('Delete Card');
+    card.remove();
+    count()
+    jobAvailableCount.innerText = cardSection.children.length;
+  })
+}
 
 
 // button click and card show ---------
 allBtn.addEventListener('click', function(){
     cardSection.classList.remove('hidden');
+    jobAvailableCount.innerText = cardSection.children.length;
 })
 interviewBtn.addEventListener('click', function(){
     cardSection.classList.add('hidden');
     noJobSection.classList.remove('hidden');
+    jobAvailableCount.innerText = interviewList.length;
 })
 rejectedBtn.addEventListener('click', function(){
     cardSection.classList.add('hidden');
     noJobSection.classList.remove('hidden');
+    jobAvailableCount.innerText = rejectedList.length;
 })
 
 // button toggle Style ----------------
@@ -71,7 +90,9 @@ function count(){
 count();
 
 
-cardSection.addEventListener('click', function(event){
+
+mainContainer.addEventListener('click', function(event){
+
     if(event.target.classList.contains('card-interview-btn')){
         const parent = event.target.parentNode.parentNode;
     
@@ -102,6 +123,7 @@ cardSection.addEventListener('click', function(event){
     
     if(currentStatus == 'rejected-btn'){
         renderRejected();
+        jobAvailableCount.innerText = interviewList.length;
     }
     count()
     }
@@ -127,7 +149,8 @@ cardSection.addEventListener('click', function(event){
     const companyNameExist = rejectedList.find(item => item.companyName == cardInfo.companyName)
     
     if(!companyNameExist){
-        rejectedList.push(cardInfo)
+        rejectedList.push(cardInfo);
+
     }
 
     interviewList = interviewList.filter(item => item.companyName != cardInfo.companyName)
@@ -178,7 +201,7 @@ function renderInterview(){
               </button>
             </div>
           </div>
-          <span
+          <span class="delete-btn"
             ><i class="fa-regular fa-trash-can border border-[#F1F2F4]"></i
           ></span>
         `
@@ -223,7 +246,7 @@ function renderRejected(){
               </button>
             </div>
           </div>
-          <span
+          <span class="delete-btn"
             ><i class="fa-regular fa-trash-can border border-[#F1F2F4]"></i
           ></span>
         `
